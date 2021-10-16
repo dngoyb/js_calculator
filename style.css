@@ -9,7 +9,7 @@
   font-family: sans-serif;
   font-size: 24px;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #b2127d;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -24,7 +24,7 @@
 
 .container {
   height: 350px;
-  width: 350px;
+  min-width: 350px;
   background-color: #14c6cc;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,6 +84,12 @@
           flex: 3;
   border: none;
   padding-right: 25px;
+  font-size: larger;
+}
+
+.box-2:focus {
+  outline: 0 none;
+  caret-color: transparent;
 }
 
 .box-17 {

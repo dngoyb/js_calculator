@@ -5,13 +5,15 @@ const cancel = document.querySelector('.cancel');
 
 let val_01 = 0;
 let val_02 = 0;
+let v1 = 0;
+let v2 = 0;
 let tracker = 0;
 let sign = '';
 let total = '';
 
-const obj = {
-	plus: '+',
-	minus: '-',
+const playSound = () => {
+	const audio = new Audio('./audio/menu.ogg');
+	audio.play();
 };
 
 cancel.addEventListener('click', () => {
@@ -20,47 +22,57 @@ cancel.addEventListener('click', () => {
 	tracker = 0;
 	sign = '';
 	total = 0;
+	input.value = 0;
+	playSound();
 });
 
 calcs.forEach((calc) => {
 	calc.addEventListener('click', () => {
+		playSound();
 		tracker = 1;
 
 		if (calc.textContent === '+') {
 			sign = '+';
-			console.log(sign);
 		} else if (calc.textContent === '−') {
 			sign = '-';
-			console.log(sign);
 		} else if (calc.textContent === '×') {
 			sign = '*';
-			console.log(sign);
 		} else if (calc.textContent === '÷') {
 			sign = '/';
-			console.log(sign);
 		} else if (calc.textContent === '=') {
 			if (sign === '+') {
 				total = parseFloat(val_01) + parseFloat(val_02);
-				console.log(total);
 			} else if (sign === '-') {
 				total = parseFloat(val_01) - parseFloat(val_02);
-				console.log(total);
 			} else if (sign === '*') {
 				total = parseFloat(val_01) * parseFloat(val_02);
-				console.log(total);
 			} else if (sign === '/') {
-				total = (parseFloat(val_01) / parseFloat(val_02)).toFixed(3);
-				console.log(total);
+				total = parseFloat(val_01) / parseFloat(val_02);
 			}
+			val_02 = 0;
+			v1 = 0;
+			v2 = 0;
+			sign = '';
+			val_01 = total;
+			input.value = total;
 		}
 	});
 });
 numbers.forEach((number) => {
 	number.addEventListener('click', () => {
+		playSound();
 		if (tracker === 0) {
-			val_01 += number.textContent;
+			if (v1 === 0) {
+				val_01 = number.textContent;
+				v1 = 1;
+			} else val_01 += number.textContent;
+			input.value = val_01;
 		} else {
-			val_02 += number.textContent;
+			if (v2 === 0) {
+				val_02 = number.textContent;
+				v2 = 1;
+			} else val_02 += number.textContent;
+			input.value = val_02;
 		}
 	});
 });

@@ -53,7 +53,10 @@ $bp: (
 	gap: $gap;
 }
 
-[class^='box-'] {
+.box,
+.box-2,
+.calc,
+.cancel {
 	background-color: #fff0f5;
 	display: flex;
 	justify-content: center;
@@ -64,13 +67,16 @@ $bp: (
 	cursor: pointer;
 }
 
-.box-1 {
+.cancel {
 	background-color: #ffdf27;
 	flex: 1;
 }
 .box-2 {
+	text-align: end;
 	background-color: #1badb2;
 	flex: 3;
+	border: none;
+	padding-right: 25px;
 }
 
 .box-17 {

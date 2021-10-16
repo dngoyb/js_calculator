@@ -49,7 +49,10 @@
   gap: 10px;
 }
 
-[class^='box-'] {
+.box,
+.box-2,
+.calc,
+.cancel {
   background-color: #fff0f5;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -66,7 +69,7 @@
   cursor: pointer;
 }
 
-.box-1 {
+.cancel {
   background-color: #ffdf27;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -74,10 +77,13 @@
 }
 
 .box-2 {
+  text-align: end;
   background-color: #1badb2;
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
+  border: none;
+  padding-right: 25px;
 }
 
 .box-17 {
